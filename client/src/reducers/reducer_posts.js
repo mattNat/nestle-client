@@ -6,8 +6,10 @@ export default function(state={}, action) {
   case FETCH_POSTS:
     console.log(action.payload.data); // [ post1, post2 ]
     // { 4: post }
-    return _.mapKeys(action.payload.data, 'id');
+    console.log(_.mapKeys(action.payload.data, 'id')); // [ post1, post2 ]
+    
 
+    return _.mapKeys(action.payload.data, 'id');    
   default:
     return state;
   }

@@ -14,6 +14,9 @@ class PostsIndex extends Component {
   componentDidMount() {
     // action creator, will concole.log twice
     this.props.fetchPosts();
+    console.log('PRINT FROM componentDidMount:', this.props.fetchPosts());
+    console.log('posts:', this.props.posts);
+    
   }
 
   renderPosts() {
