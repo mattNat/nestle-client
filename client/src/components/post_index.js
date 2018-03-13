@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // cearly identical to anchor tag
 import { Link } from 'react-router-dom';
-import { fetchPosts } from '../actions';
+import { fetchPosts, fetchTrails } from '../actions';
 import _ from 'lodash';
 
 // when are we going to call reaction creator
@@ -14,8 +14,10 @@ class PostsIndex extends Component {
   componentDidMount() {
     // action creator, will concole.log twice
     this.props.fetchPosts();
-    console.log('PRINT FROM componentDidMount:', this.props.fetchPosts());
-    console.log('posts:', this.props.posts);
+    this.props.fetchTrails();
+    console.log('PRINT componentDidMount POSTS:', this.props.fetchPosts());
+    console.log('PRINT componentDidMount TRAILS:', this.props.fetchTrails());
+    // console.log('posts:', this.props.posts);
     
   }
 
@@ -55,11 +57,14 @@ class PostsIndex extends Component {
 
 // lists of post get inside component
 function mapsStateToProps(state) {
-  return { posts: state.posts };
+  return { 
+    posts: state.posts,
+    // trails: state.trails 
+  };
 }
 
 
 // null - we are not passing mapsStateToProps
 // fetchPosts is identical to mapDispatchToProps
 // still have access to this.props.fetch.posts
-export default connect(mapsStateToProps, { fetchPosts })(PostsIndex);
+export default connect(mapsStateToProps, { fetchPosts, fetchTrails })(PostsIndex);

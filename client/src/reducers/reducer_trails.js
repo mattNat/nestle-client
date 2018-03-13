@@ -1,10 +1,10 @@
 import _ from 'lodash';
-import { FETCH_POSTS } from '../actions';
+import { FETCH_TRAILS } from '../actions';
 
 export default function(state={}, action) {
   switch (action.type) {
-  case FETCH_POSTS:
-    // console.log(action.payload.data); // [ post1, post2 ]
+  case FETCH_TRAILS:
+    console.log(action.payload.data); // [ post1, post2 ]
     // { 4: post }
     // console.log(_.mapKeys(action.payload.data, 'id')); // [ post1, post2 ]
     
