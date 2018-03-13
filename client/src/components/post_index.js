@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// cearly identical to anchor tag
+// clearly identical to anchor tag
 import { Link } from 'react-router-dom';
 import { fetchPosts, fetchTrails } from '../actions';
 import _ from 'lodash';
 
 // when are we going to call reaction creator
 // react lifecycle method
-
 class PostsIndex extends Component {
   // one time loading procedure
   // ideal for data loading
@@ -15,54 +14,34 @@ class PostsIndex extends Component {
     // action creator, will concole.log twice
     this.props.fetchPosts();
     this.props.fetchTrails();
-    // console.log('PRINT componentDidMount POSTS:', this.props.fetchPosts());
-    // console.log('PRINT componentDidMount TRAILS:', this.props.fetchTrails());
-    // console.log('posts:', this.props.posts);
-    
   }
 
   renderPosts() {
-    console.log(this.props.trails);
-    console.log(this.props.posts);
-
-    // _.map(this.props.posts, test => {
-    //   console.log(test.name);
-    // });
-
-    // _.map(this.props.trails, test => {
-    //   console.log(test.name);
-    // });
+    // const test = this.props.trails[0];
+    // if (!this.props.trails[0]) {
+    //   <div>loading...</div>
+    // } else {
+    //   const test= 
+    // }
+    const myTrails = this.props.trails[0] || {};
+    console.log(myTrails.trails);
+    // console.log(this.props.posts);
     
-
-    // this.props.posts is an object -> 
-    // cannot use array map method previously
-
-    // but... lodash's map function can deal with objects
-
-    return _.map(this.props.trails, (post, index) => {
-      console.log(post.trails[0].name);
-      
-
+    return _.map(myTrails.trails, trail => {
       return (
-        <li className='list-group-item' key={post.id}>
-          {post.trails[index].name}
+        <li className='list-group-item' key={trail.id.toString()} >
+          Name: {trail.name} <br/>
+          Length (round-trip): {trail.length} <br/>
+          <img src= {trail.imgSqSmall}  alt={trail.name} />
         </li>
       );
     });
-
-    // return this.props.trails.map(trail => {
-    //   return (
-    //     <li className='list-group-item' key={trail.id}>
-    //       {trail.name}
-    //     </li>
-    //   );
-    // });
   }
+  
 
   render() {
     // will console log twice
     // console.log(this.props.posts);
-    
     return (
       <div>
         <div className='text-xs-right'>
