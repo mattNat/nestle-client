@@ -27,3 +27,5 @@ export function fetchTrails() {
     payload: request
   }
 }
+
+// create a more sophis object

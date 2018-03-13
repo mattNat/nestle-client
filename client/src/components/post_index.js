@@ -15,24 +15,48 @@ class PostsIndex extends Component {
     // action creator, will concole.log twice
     this.props.fetchPosts();
     this.props.fetchTrails();
-    console.log('PRINT componentDidMount POSTS:', this.props.fetchPosts());
-    console.log('PRINT componentDidMount TRAILS:', this.props.fetchTrails());
+    // console.log('PRINT componentDidMount POSTS:', this.props.fetchPosts());
+    // console.log('PRINT componentDidMount TRAILS:', this.props.fetchTrails());
     // console.log('posts:', this.props.posts);
     
   }
 
   renderPosts() {
+    console.log(this.props.trails);
+    console.log(this.props.posts);
+
+    // _.map(this.props.posts, test => {
+    //   console.log(test.name);
+    // });
+
+    // _.map(this.props.trails, test => {
+    //   console.log(test.name);
+    // });
+    
+
     // this.props.posts is an object -> 
     // cannot use array map method previously
 
     // but... lodash's map function can deal with objects
-    return _.map(this.props.posts, post => {
+
+    return _.map(this.props.trails, (post, index) => {
+      console.log(post.trails[0].name);
+      
+
       return (
         <li className='list-group-item' key={post.id}>
-          {post.title}
+          {post.trails[index].name}
         </li>
       );
     });
+
+    // return this.props.trails.map(trail => {
+    //   return (
+    //     <li className='list-group-item' key={trail.id}>
+    //       {trail.name}
+    //     </li>
+    //   );
+    // });
   }
 
   render() {
@@ -59,7 +83,7 @@ class PostsIndex extends Component {
 function mapsStateToProps(state) {
   return { 
     posts: state.posts,
-    // trails: state.trails 
+    trails: state.trails 
   };
 }
 
