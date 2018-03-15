@@ -77,8 +77,8 @@ class PostsNew extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
-          label='Name'
-          name='name'
+          label='User'
+          name='user'
           component={this.renderField}
         />
         <Field
@@ -91,7 +91,7 @@ class PostsNew extends Component {
           name='date'
           component={this.renderField}
         />
-        <button type='submit' className='btn btn-primary'>Submit</button>
+        <button type='submit' className='btn btn-primary'>Save</button>
         <Link to='/' className='btn btn-danger'>Cancel</Link>
       </form>
     )
@@ -107,13 +107,13 @@ function validate(values) {
   //   errors.title = 'Title must be at least 3 characters';
   // }
   if (!values.user) {
-    errors.user = 'Enter a title';
+    errors.user = 'Enter a user name';
   }
   if (!values.comment) {
-    errors.comment = 'Enter some categories';
+    errors.comment = 'Enter a comment';
   }
   if (!values.date) {
-    errors.date = 'Enter some content please';
+    errors.date = 'Enter a planned date';
   }
 
   // if errors is empty, the form is fine to submit

@@ -33,7 +33,7 @@ class PostsIndex extends Component {
     // console.log(this.props.trails[0]);
     // console.log(this.state);
     
-    console.log('From post_index.js:', myTrails.trails);
+    console.log(myTrails.trails);
     // console.log(this.props.posts);
     
     return _.map(myTrails.trails, trail => {
@@ -43,9 +43,6 @@ class PostsIndex extends Component {
           Length (round-trip): {trail.length} mi<br/>
           Condition: {trail.conditionStatus} <br/>
           Stars: {trail.stars} out of {trail.starVotes} votes <br/>
-          <Link to={`/posts/${trail.id}`} >
-            More Details
-          </Link> <br/>
           <img src= {trail.imgSqSmall}  alt={trail.name} />
         </li>
       );
