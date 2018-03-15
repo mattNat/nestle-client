@@ -19,7 +19,6 @@ class PostsIndex extends Component {
       // feed lines below
       this.props.fetchTrails();
     }
-        
   }
 
   renderPosts() {
@@ -39,13 +38,13 @@ class PostsIndex extends Component {
     return _.map(myTrails.trails, trail => {
       return (
         <li className='list-group-item' key={trail.id.toString()} >
+          <Link to={`/posts/${trail.id}`} >
+            Save this hike!
+          </Link> <br/>
           Name: {trail.name} <br/>
           Length (round-trip): {trail.length} mi<br/>
           Condition: {trail.conditionStatus} <br/>
           Stars: {trail.stars} out of {trail.starVotes} votes <br/>
-          <Link to={`/posts/${trail.id}`} >
-            More Details
-          </Link> <br/>
           <img src= {trail.imgSqSmall}  alt={trail.name} />
         </li>
       );
@@ -61,7 +60,7 @@ class PostsIndex extends Component {
         <SearchBar />
         <div className='text-xs-right'>
           <Link className='btn btn-primary' to='/posts/new'>
-            Add a Post
+            Saved Posts
           </Link>
         </div>
         <h3>Find your next adventure...</h3>
